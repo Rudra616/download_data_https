@@ -1,0 +1,117 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Register</title>
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+        <!-- Icons -->
+        <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet">
+
+        <!-- Vendor CSS -->
+        <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/datepicker/daterangepicker.css' %}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <style>
+            body {
+                background: url("{% static 'imgs/regimg.webp' %}") no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Poppins', sans-serif;
+            }
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .card {
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 10px;
+                padding: 40px;
+                width: 450px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            .title {
+                text-align: center;
+                font-weight: 600;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .input-group label {
+                font-weight: 500;
+            }
+            .input--style-4 {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .btn {
+                width: 100%;
+                background-color: #007bff;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 15px;
+            }
+            .btn:hover {
+                background-color: #0056b3;
+            }
+            .login-link {
+                text-align: center;
+                margin-top: 15px;
+            }
+            .login-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+            .login-link a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <h2 class="title">Register</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label>Name</label>
+                        <input class="input--style-4" type="text" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input class="input--style-4" type="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input class="input--style-4" type="text" name="phone" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Address</label>
+                        <textarea class="input--style-4" name="address" style="resize: none;" required></textarea>
+                    </div>
+                    <button class="btn" type="submit">submit</button>
+                    
+                </form>
+                
+            </div>
+        </div>
+
+        {% if message %}
+            <p style = "color : green;">{{ message }}</p>
+        {% endif %}
+        
+    </body>
+    </html>
